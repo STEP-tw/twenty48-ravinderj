@@ -12,5 +12,4 @@
    add-padding
    sum-identicals
    group-identicals
-   filter-not-zero
-   first))
+   filter-not-zero))

@@ -8,10 +8,7 @@
   grid)
 
 (def move-grid-left
-  (comp
-   (partial map move-elements-left)
-   (partial take-while not-empty?)
-   (partial iterate rest)))
+  (partial map move-elements-left))
 
 (defn move-grid-down
   "Moves an entire grid down"
