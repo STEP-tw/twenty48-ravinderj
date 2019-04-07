@@ -2,19 +2,21 @@
   (:gen-class))
 
 (def transpose (partial apply map vector))
-(def not-zero? (comp not zero?))
-(def not-empty? (comp not empty?))
-(def filter-not-zero (partial filter not-zero?))
+(def filter-not-zero (partial filter (comp not zero?)))
 (def group-identicals (partial partition-by identity))
 (def sum-identicals (partial map (partial apply +)))
-(def add-padding
+(def add-padding-left
   (comp
    (partial take 4)
    #(concat % (repeat 0))))
 
-(def move-elements-left
+(def move-left
   (comp
-   add-padding
    sum-identicals
    group-identicals
    filter-not-zero))
+
+(def move-left-with-padding (comp add-padding-left move-left))
+
+(def move-right-with-padding
+  (comp reverse move-left-with-padding reverse))

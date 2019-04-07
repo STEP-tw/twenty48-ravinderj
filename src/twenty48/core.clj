@@ -2,18 +2,17 @@
   (:require [twenty48.utils :refer :all])
   (:gen-class))
 
-(defn move-grid-right
-  "Moves an entire grid to the right"
-  [grid]
-  grid)
+(def move-grid-right
+  (partial map move-right-with-padding))
 
 (def move-grid-left
-  (partial map move-elements-left))
+  (partial map move-left-with-padding))
 
-(defn move-grid-down
-  "Moves an entire grid down"
-  [grid]
-  grid)
+(def move-grid-down
+  (comp
+    transpose
+    move-grid-right
+    transpose))
 
 (def move-grid-up
   (comp
