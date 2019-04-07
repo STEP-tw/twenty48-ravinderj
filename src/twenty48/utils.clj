@@ -3,7 +3,10 @@
 
 (def transpose (partial apply map vector))
 (def filter-not-zero (partial filter (comp not zero?)))
-(def group-identicals (partial partition-by identity))
+(def group-identicals-in-pairs
+ (comp
+   (partial mapcat (partial partition-all 2))
+   (partial partition-by identity)))
 (def sum-identicals (partial map (partial apply +)))
 (def add-padding-left
   (comp
@@ -13,7 +16,7 @@
 (def move-left
   (comp
    sum-identicals
-   group-identicals
+   group-identicals-in-pairs
    filter-not-zero))
 
 (def move-left-with-padding (comp add-padding-left move-left))

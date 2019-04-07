@@ -8,7 +8,7 @@
 
 (deftest group-similar-ones
   (testing "groups the numbers which are similar"
-    (is (= '((2 2) (4 4)) (group-identicals '(2 2 4 4))))))
+    (is (= '((2 2) (2) (4 4)) (group-identicals-in-pairs '(2 2 2 4 4))))))
 
 (deftest add-similar-ones
   (testing "add the numbers which are similar"
