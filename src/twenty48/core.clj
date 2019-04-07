@@ -10,9 +10,9 @@
 
 (def move-grid-down
   (comp
-    transpose
-    move-grid-right
-    transpose))
+   transpose
+   move-grid-right
+   transpose))
 
 (def move-grid-up
   (comp
