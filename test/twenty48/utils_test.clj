@@ -14,10 +14,18 @@
   (testing "add the numbers which are similar"
     (is (= '(4 8) (sum-identicals '((2 2) (4 4)))))))
 
-(deftest add-identicals
-  (testing "add the identical numbers"
-    (is (= '(4 8) (sum-identicals '((2 2) (4 4)))))))
-
 (deftest apply-left-padding
   (testing "apply trailing padding"
     (is (= '(4 8 0 0) (add-padding-left '(4 8))))))
+
+(deftest moving-left-with-padding
+  (testing
+    (is (= '(4 0 0 0) (move-left-with-padding '(2 0 2 0))))))
+
+(deftest moving-right-with-padding
+  (testing
+    (is (= '(0 0 0 4) (move-right-with-padding '(2 0 2 0))))))
+
+(deftest transpose-matrix
+  (testing
+   (is (= '((1 3) (2 4)) (transpose '((1 2) (3 4)))))))
